@@ -1,8 +1,8 @@
 const fs = require("fs");
 
-const folderName = "./frontend-scaffold";
+const folder = "./frontend-scaffold";
 
-const htmlText = `<!DOCTYPE html>
+const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -17,22 +17,26 @@ const htmlText = `<!DOCTYPE html>
 </body>
 </html>`;
 
-const cssText = `h1 {
+const cssContent = `h1 {
 text-align:center;
 }`;
 
-const jsText = `alert("Welcome");`;
+const jsContent = `alert("Welcome");`;
+
+function createFolder() {
+  fs.mkdirSync(folder);
+  fs.writeFileSync(`${folder}/index.html`, htmlContent);
+  fs.mkdirSync(`${folder}/css`);
+  fs.writeFileSync(`${folder}/css/style.css`, cssContent);
+  fs.mkdirSync(`${folder}/js`);
+  fs.writeFileSync(`${folder}/js/index.js`, jsContent);
+  fs.mkdirSync(`${folder}/images`);
+  console.log(`“Frontend scaffold created successfully!”`);
+}
 
 try {
-  if (!fs.existsSync(folderName)) {
-    fs.mkdirSync(folderName);
-    fs.writeFileSync(`${folderName}/index.html`, htmlText);
-    fs.mkdirSync(`${folderName}/css`);
-    fs.writeFileSync(`${folderName}/css/style.css`, cssText);
-    fs.mkdirSync(`${folderName}/js`);
-    fs.writeFileSync(`${folderName}/js/index.js`, jsText);
-    fs.mkdirSync(`${folderName}/images`);
-    console.log(`“Frontend scaffold created successfully!”`);
+  if (!fs.existsSync(folder)) {
+    createFolder();
   }
 } catch (err) {
   console.error(err);
