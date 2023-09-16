@@ -29,7 +29,7 @@ function createFolder() {
   fs.mkdirSync(`${folder}/css`);
   fs.writeFileSync(`${folder}/css/style.css`, cssContent);
   fs.mkdirSync(`${folder}/js`);
-  fs.writeFileSync(`${folder}/js/index.js`, jsContent);
+  fs.writeFileSync(`${folder}/js/script.js`, jsContent);
   fs.mkdirSync(`${folder}/images`);
   console.log(`“Frontend scaffold created successfully!”`);
 }
